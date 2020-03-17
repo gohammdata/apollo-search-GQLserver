@@ -10,6 +10,16 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 var mongoose = require('mongoose');
+var graphqlHTTP = require('express-graphql');
+var schema = require('./graphql/bookSchema');
+var cors = require("cors");
+
+//Use CORS GraphQL over httpapp.use('*', cors());
+app.use('/graphql', cors(), graphqlHTTP({
+  schema: schema,
+  rootValue: global,
+  graphiql: true,
+}));
 
 // MongoDB connect
 mongoose.connect('mongodb://localhost/graphql', { promiseLibrary: require('bluebird'), useNewUrlParser: true })
