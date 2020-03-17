@@ -11,7 +11,7 @@ var app = express();
 
 var mongoose = require('mongoose');
 var graphqlHTTP = require('express-graphql');
-var schema = require('./graphql/bookSchema');
+var schema = require('./graphql/bookSchemas');
 var cors = require("cors");
 
 //Use CORS GraphQL over httpapp.use('*', cors());
@@ -22,7 +22,7 @@ app.use('/graphql', cors(), graphqlHTTP({
 }));
 
 // MongoDB connect
-mongoose.connect('mongodb://localhost/graphql', { promiseLibrary: require('bluebird'), useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/graphql', { promiseLibrary: require('bluebird'), useNewUrlParser: true, useUnifiedTopology: true })
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
 // view engine setup
