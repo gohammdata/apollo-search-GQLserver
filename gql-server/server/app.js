@@ -12,7 +12,7 @@ var app = express();
 var mongoose = require('mongoose');
 
 // MongoDB connect
-mongoose.connect('mongodb://localhost/node-graphql', { promiseLibrary: require('bluebird'), useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/graphql', { promiseLibrary: require('bluebird'), useNewUrlParser: true })
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
 // view engine setup
